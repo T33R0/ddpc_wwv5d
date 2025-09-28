@@ -104,7 +104,7 @@ export function Features() {
                 </div>
               </div>
             </div>
-            <div className="relative h-64 lg:h-auto">
+            <div className="relative h-64 lg:h-auto lg:min-h-full">
               <Image
                 src="/images/david-kennedy-S1efkM6S4sw-unsplash.jpg"
                 alt="Community of car enthusiasts collaborating together"

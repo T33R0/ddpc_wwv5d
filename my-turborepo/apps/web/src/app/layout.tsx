@@ -5,7 +5,7 @@ import { Footer } from '@repo/ui/footer';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import './globals.css';
 
-const inter = Inter({ subsets: ['latin'] });
+const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
 
 export const metadata: Metadata = {
   title: 'ddpc',
@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${inter.className} font-sans`}>
+    <html lang="en" className={`${inter.variable} font-sans`}>
       <body>
         <div className="flex flex-col min-h-screen bg-black">
           <Header />
