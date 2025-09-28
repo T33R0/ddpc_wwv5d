@@ -1,28 +1,66 @@
-"use client";
+'use client';
 
-import { Logo } from "./logo";
-import { Button } from "./button";
+import React from 'react';
+import Link from 'next/link';
+import { Logo } from './logo';
+import { Button } from './button';
+import { GridCard } from './grid-card';
+import { Pricing } from './landing/Pricing';
+import {
+  NavigationMenu,
+  NavigationMenuList,
+  NavigationMenuItem,
+  NavigationMenuTrigger,
+  NavigationMenuContent,
+  NavigationMenuLink,
+} from './navigation-menu';
 
 export function Header() {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-black/50 backdrop-blur-lg">
-      <div className="container mx-auto px-4">
-        <div className="flex h-16 items-center justify-between">
-          <div className="flex items-center gap-6">
-            <a href="/">
-              <Logo />
-            </a>
-            <nav className="hidden md:flex md:gap-6">
-              <a href="/garage" className="text-sm font-medium uppercase text-muted-foreground transition-colors hover:text-foreground">Garage</a>
-              <a href="/timeline" className="text-sm font-medium uppercase text-muted-foreground transition-colors hover:text-foreground">Timeline</a>
-              <a href="/tasks" className="text-sm font-medium uppercase text-muted-foreground transition-colors hover:text-foreground">Tasks</a>
-            </nav>
-          </div>
-          <div className="flex items-center gap-4">
-            <Button variant="secondary">Sign In</Button>
-            <Button>Start Your Build Log</Button>
-          </div>
-        </div>
+      <div className="container mx-auto flex items-center justify-between p-4 text-white">
+        <Link href="/">
+          <Logo />
+        </Link>
+        <NavigationMenu>
+          <NavigationMenuList>
+            <NavigationMenuItem>
+              <NavigationMenuTrigger>Discover</NavigationMenuTrigger>
+              <NavigationMenuContent>
+                <div className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
+                  <GridCard title="Explore Vehicles" href="/discover">
+                    Browse a curated collection of unique and interesting vehicles.
+                  </GridCard>
+                  <GridCard title="Featured Builds" href="/builds">
+                    Get inspired by top builds from the community.
+                  </GridCard>
+                </div>
+              </NavigationMenuContent>
+            </NavigationMenuItem>
+            <NavigationMenuItem>
+              <NavigationMenuTrigger>Community</NavigationMenuTrigger>
+              <NavigationMenuContent>
+                <div className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
+                  <GridCard title="Community Builds" href="/community/builds">
+                    See what others are building and share your own progress.
+                  </GridCard>
+                  <GridCard title="Member Garages" href="/community/garages">
+                    Check out the garages of other enthusiasts.
+                  </GridCard>
+                </div>
+              </NavigationMenuContent>
+            </NavigationMenuItem>
+            <NavigationMenuItem>
+              <NavigationMenuTrigger>Pricing</NavigationMenuTrigger>
+              <NavigationMenuContent>
+                <div className="p-4 w-[600px]">
+                  <Pricing />
+                </div>
+              </NavigationMenuContent>
+            </NavigationMenuItem>
+          </NavigationMenuList>
+        </NavigationMenu>
+        <Button>Sign In</Button>
       </div>
     </header>
   );
