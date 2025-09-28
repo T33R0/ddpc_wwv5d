@@ -18,7 +18,8 @@
     "next": "^15.5.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
-    "@vercel/speed-insights": "*"
+    "@vercel/speed-insights": "*",
+    "framer-motion": "*"
   },
   "devDependencies": {
     "@repo/eslint-config": "*",
