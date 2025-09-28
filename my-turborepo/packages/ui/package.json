@@ -4,6 +4,7 @@
   "private": true,
   "exports": {
     "./*": "./src/*.tsx",
+    "./landing": "./src/landing/index.tsx",
     "./lib/utils": "./src/lib/utils.ts"
   },
   "scripts": {
@@ -25,11 +26,12 @@
     "react-dom": ">=18"
   },
   "dependencies": {
+    "@radix-ui/react-label": "^2.1.0",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
-    "tailwind-merge": "^2.5.2",
-    "@radix-ui/react-label": "^2.1.0",
-    "react": "^19.1.0",
-    "react-dom": "^19.1.0"
+    "lucide-react": "^0.544.0",
+    "react": ">=18",
+    "react-dom": ">=18",
+    "tailwind-merge": "^2.5.2"
   }
 }

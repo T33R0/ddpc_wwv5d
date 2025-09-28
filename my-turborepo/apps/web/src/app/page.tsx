@@ -1,23 +1,12 @@
-import { Button } from "@repo/ui/button";
+import { Hero, Features, Testimonials, Pricing } from '@repo/ui/landing';
 
 export default function Home() {
   return (
-    <section className="py-12 md:py-24 lg:py-32 xl:py-48">
-      <div className="container px-4 md:px-6">
-        <div className="flex flex-col items-center space-y-4 text-center">
-          <div className="space-y-2">
-            <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl/none">
-              Document the Drive.
-            </h1>
-            <p className="mx-auto max-w-[700px] text-muted-foreground md:text-xl">
-              Your Project. Your History. Your Legacy.
-            </p>
-          </div>
-          <div className="space-x-4">
-            <Button>Start Your Build Log</Button>
-          </div>
-        </div>
-      </div>
-    </section>
+    <main>
+      <Hero />
+      <Features />
+      <Testimonials />
+      <Pricing />
+    </main>
   );
 }
