@@ -1,35 +1,24 @@
-import type { Metadata } from "next";
-import localFont from "next/font/local";
-import { Header } from "@repo/ui/header";
-import { Footer } from "@repo/ui/footer";
-import { SpeedInsights } from "@vercel/speed-insights/next";
-import "./globals.css";
+import type { Metadata } from 'next';
+import { Inter } from 'next/font/google';
+import { Header } from '@repo/ui/header';
+import { Footer } from '@repo/ui/footer';
+import { SpeedInsights } from '@vercel/speed-insights/next';
+import './globals.css';
 
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-});
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-});
+const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: "DDPC - Document the Drive",
-  description: "Your Project. Your History. Your Legacy.",
+  title: 'ddpc',
+  description: 'stop winging it',
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        <div className="flex flex-col min-h-screen">
+    <html lang="en" className={`${inter.className} font-sans`}>
+      <body>
+        <div className="flex flex-col min-h-screen bg-black">
           <Header />
-          <main className="flex-grow container mx-auto px-4 py-8">
+          <main className="flex-grow">
             {children}
           </main>
           <Footer />
