@@ -37,6 +37,9 @@ This package contains a set of shared, unstyled React components based on `shadc
 - `Input`
 - `Label`
 - `Textarea`
+- `Logo`
+- `Header`
+- `Footer`
 
 **How to Use:**
 
@@ -78,6 +81,34 @@ To ensure consistency across the monorepo, we use shared configurations for ESLi
 - **Prettier (`@repo/prettier-config`)**: Enforces consistent code formatting. Your MFE's `prettier.config.js` should import this package.
 - **Tailwind CSS (`@repo/tailwind-config`)**: Provides a shared Tailwind CSS preset with theme tokens (colors, border radius, etc.). Your MFE's `tailwind.config.ts` must use this preset.
 - **TypeScript (`@repo/typescript-config`)**: Provides base `tsconfig.json` files for different types of projects (e.g., `nextjs.json`, `react-library.json`). Your MFE's `tsconfig.json` should extend from the appropriate file in this package.
+
+### 2.3. Global Layout
+
+The main application layout is constructed in each MFE's `app/layout.tsx` file. This file imports the shared `Header` and `Footer` components from the `@repo/ui` package to create a consistent frame for the entire application.
+
+**Example (`apps/web/app/layout.tsx`):**
+
+```tsx
+import { Header } from "@repo/ui/header";
+import { Footer } from "@repo/ui/footer";
+import "./globals.css";
+
+export default function RootLayout({ children }) {
+  return (
+    <html lang="en">
+      <body>
+        <div className="flex flex-col min-h-screen">
+          <Header />
+          <main className="flex-grow container mx-auto px-4 py-8">
+            {children}
+          </main>
+          <Footer />
+        </div>
+      </body>
+    </html>
+  );
+}
+```
 
 ## 3. MFE Guidelines
 
