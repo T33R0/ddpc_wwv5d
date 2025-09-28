@@ -46,7 +46,7 @@ This package contains a set of shared, unstyled React components based on `shadc
 Import components directly from the `@repo/ui` package within your MFE's components:
 
 ```tsx
-// Example: apps/web/app/page.tsx
+// Example: apps/web/src/app/page.tsx
 
 import { Button } from "@repo/ui/button";
 import { Card, CardHeader, CardTitle, CardContent } from "@repo/ui/card";
@@ -86,7 +86,7 @@ To ensure consistency across the monorepo, we use shared configurations for ESLi
 
 The main application layout is constructed in each MFE's `app/layout.tsx` file. This file imports the shared `Header` and `Footer` components from the `@repo/ui` package to create a consistent frame for the entire application.
 
-**Example (`apps/web/app/layout.tsx`):**
+**Example (`apps/web/src/app/layout.tsx`):**
 
 ```tsx
 import { Header } from "@repo/ui/header";
@@ -112,18 +112,48 @@ export default function RootLayout({ children }) {
 
 ## 3. MFE Guidelines
 
-### 3.1. Development Workflow
+### 3.1. Feature Slice Architecture (`apps/web`)
+
+To ensure scalability and prepare for future growth, the `apps/web` application follows a "feature slice" architecture. This design organizes code by feature, making it easier to manage and eventually extract into a separate micro-frontend if needed.
+
+```
+apps/web/
+└─ src/
+   ├─ app/             # Routing layer (Next.js App Router)
+   │   ├─ discover/
+   │   ├─ garage/
+   │   ├─ vehicle/
+   │   ├─ community/
+   │   ├─ account/
+   │   └─ admin/
+   │
+   └─ features/        # Business logic and UI components
+       ├─ discover/
+       ├─ garage/
+       ├─ community/
+       ├─ account/
+       └─ admin/
+```
+
+- **`src/app/`**: This directory is responsible for **routing**. Each folder inside `app` maps to a URL segment. The `page.tsx` file within each folder is the entry point for that route and is responsible for fetching data and composing the UI from components in the `features` directory.
+- **`src/features/`**: This directory contains the actual implementation of each feature. This includes UI components, hooks, business logic, and API interactions related to a specific domain (e.g., everything related to the "garage" feature lives in `src/features/garage`).
+
+This separation ensures that our routing is decoupled from our feature logic, which is critical for maintainability and future refactoring.
+
+### 3.2. Development Workflow
 
 1.  **Run all apps:** From the root of the `my-turborepo` directory, run `npm run dev` to start the development servers for all MFEs simultaneously.
-2.  **Create new components:** If a component is specific to a single MFE, create it within that MFE's directory (e.g., `apps/web/components/`). If the component is intended to be used by multiple MFEs, add it to the `@repo/ui` package.
+2.  **Create new components:**
+    - If a component is specific to a single feature, create it within that feature's directory (e.g., `apps/web/src/features/garage/components/`).
+    - If a component is intended to be used by multiple MFEs, add it to the `@repo/ui` package.
 3.  **Install dependencies:** When adding a new dependency, determine if it's specific to one MFE or should be shared. Install it in the appropriate `package.json` and run `npm install` from the root of the monorepo.
 
-### 3.2. Styling
+### 3.3. Styling
 
 - **Use Tailwind CSS:** All styling should be done using Tailwind CSS utility classes.
 - **Use shared components:** Whenever possible, use the components from the `@repo/ui` package.
 - **No custom CSS files (unless necessary):** Avoid writing custom CSS files. If you must, keep them scoped to the component they are styling.
 
-### 3.3. State Management
+### 3.4. State Management
 
 Each MFE is responsible for its own state management. If you need to share state between MFEs, consider using a global state management library (e.g., Zustand, Redux) or passing state via URL parameters or a shared parent application (if applicable).
