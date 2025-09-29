@@ -4,9 +4,11 @@ import React from 'react';
 import Link from 'next/link';
 import { Logo } from './logo';
 import { AuthModal } from './auth-modal';
+import { ChatDrawer } from './chat-drawer';
 import { Button } from './button';
 import { GridCard } from './grid-card';
 import { Pricing } from './landing/Pricing';
+import { ChevronDown, ChevronUp } from 'lucide-react';
 import {
   NavigationMenu,
   NavigationMenuList,
@@ -18,10 +20,12 @@ import {
 
 export function Header() {
   const [authModalOpen, setAuthModalOpen] = React.useState(false);
+  const [chatDrawerOpen, setChatDrawerOpen] = React.useState(false);
 
   return (
     <>
       <AuthModal open={authModalOpen} onOpenChange={setAuthModalOpen} />
+      <ChatDrawer open={chatDrawerOpen} onOpenChange={setChatDrawerOpen} />
     <header className="fixed top-0 left-0 right-0 z-50 bg-black/50 backdrop-blur-lg">
       <div className="container mx-auto flex items-center justify-between p-4 text-white">
         <Link href="/">
@@ -54,6 +58,12 @@ export function Header() {
                   </GridCard>
                 </div>
               </NavigationMenuContent>
+            </NavigationMenuItem>
+            <NavigationMenuItem>
+                <button onClick={() => setChatDrawerOpen(true)} className="group flex items-center justify-center gap-1 px-4 py-2 text-sm font-medium text-white hover:bg-white/10 rounded-md transition-colors">
+                  Scrutineer
+                  {chatDrawerOpen ? <ChevronUp className="h-4 w-4" /> : <ChevronDown className="h-4 w-4" />}
+                </button>
             </NavigationMenuItem>
             <NavigationMenuItem>
               <NavigationMenuTrigger>Pricing</NavigationMenuTrigger>
