@@ -15,9 +15,15 @@ type VehicleGalleryProps = {
 export function VehicleGallery({ vehicles, filters }: VehicleGalleryProps) {
   const filteredVehicles = vehicles.filter(vehicle => {
     return (
-      (filters.vehicleType === 'all' || vehicle.vehicleType === filters.vehicleType) &&
-      (filters.make === 'all' || vehicle.make === filters.make) &&
-      (filters.drivetrain === 'all' || vehicle.drivetrain === filters.drivetrain)
+      (!filters.minYear || vehicle.year >= filters.minYear) &&
+      (!filters.maxYear || vehicle.year <= filters.maxYear) &&
+      (!filters.make || vehicle.make === filters.make) &&
+      (!filters.model || vehicle.model === filters.model) &&
+      (!filters.engineType || vehicle.engineType === filters.engineType) &&
+      (!filters.fuelType || vehicle.fuelType === filters.fuelType) &&
+      (!filters.drivetrain || vehicle.drivetrain === filters.drivetrain) &&
+      (!filters.doors || vehicle.doors === filters.doors) &&
+      (!filters.vehicleType || vehicle.vehicleType === filters.vehicleType)
     );
   });
 

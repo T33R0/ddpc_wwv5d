@@ -6,7 +6,7 @@ import { VehicleGallery } from "../../features/discover/vehicle-gallery";
 import { mockVehicles } from "../../lib/mock-data";
 
 export default function Discover() {
-  const [filters, setFilters] = useState<FilterState>({ vehicleType: 'all', make: 'all', drivetrain: 'all' });
+  const [filters, setFilters] = useState<FilterState>({ minYear: null, maxYear: null, make: null, model: null, engineType: null, fuelType: null, drivetrain: null, doors: null, vehicleType: null });
 
   return (
     <section className="py-12">
