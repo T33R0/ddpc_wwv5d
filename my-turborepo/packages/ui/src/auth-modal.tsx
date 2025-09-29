@@ -25,7 +25,7 @@ export function AuthModal(props: AuthModalProps) {
 					<Button
 						type="button"
 						variant="outline"
-						className="animate-in fade-in w-full duration-300"
+						className="w-full border-slate-700 hover:bg-slate-900/50"
 						onClick={() => alert('signed in with google')}
 					>
 						<GoogleIcon className="w-4 h-4 me-2" />
@@ -48,7 +48,7 @@ export function AuthModal(props: AuthModalProps) {
 					<div className="relative h-max">
 						<Input
 							placeholder="your.email@example.com"
-							className="peer ps-9"
+							className="peer ps-9 bg-transparent border-slate-700"
 							type="email"
 						/>
 						<div className="text-muted-foreground pointer-events-none absolute inset-y-0 start-0 flex items-center justify-center ps-3 peer-disabled:opacity-50">
@@ -59,7 +59,7 @@ export function AuthModal(props: AuthModalProps) {
 					<Button
 						type="button"
 						variant="outline"
-						className="animate-in fade-in mt-4 w-full duration-300"
+						className="w-full mt-4 border-slate-700 hover:bg-slate-900/50"
 						onClick={() => alert('sign up with your email')}
 					>
 						<span>Continue With Email</span>
