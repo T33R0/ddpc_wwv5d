@@ -3,6 +3,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { Logo } from './logo';
+import { AuthModal } from './auth-modal';
 import { Button } from './button';
 import { GridCard } from './grid-card';
 import { Pricing } from './landing/Pricing';
@@ -16,7 +17,11 @@ import {
 } from './navigation-menu';
 
 export function Header() {
+  const [authModalOpen, setAuthModalOpen] = React.useState(false);
+
   return (
+    <>
+      <AuthModal open={authModalOpen} onOpenChange={setAuthModalOpen} />
     <header className="fixed top-0 left-0 right-0 z-50 bg-black/50 backdrop-blur-lg">
       <div className="container mx-auto flex items-center justify-between p-4 text-white">
         <Link href="/">
@@ -60,8 +65,9 @@ export function Header() {
             </NavigationMenuItem>
           </NavigationMenuList>
         </NavigationMenu>
-        <Button>Sign In</Button>
+        <Button onClick={() => setAuthModalOpen(true)}>Sign In</Button>
       </div>
     </header>
+    </>
   );
 }
