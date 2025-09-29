@@ -13,6 +13,11 @@ export interface Vehicle {
   year: number;
   vin?: string;
   imageUrl?: string;
+  engineType?: 'I4' | 'I6' | 'V6' | 'V8' | 'V10' | 'EV';
+  fuelType?: 'Gasoline' | 'Diesel' | 'Electric';
+  drivetrain?: 'RWD' | 'FWD' | 'AWD';
+  doors?: 2 | 3 | 4;
+  vehicleType?: 'Sedan' | 'Coupe' | 'SUV' | 'Truck' | 'Hatchback';
 }
 
 export interface WorkItem {

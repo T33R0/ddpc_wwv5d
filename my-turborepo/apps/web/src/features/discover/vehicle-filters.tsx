@@ -1,41 +1,48 @@
 'use client';
 
-import React, { useState } from 'react';
-import { DropdownMenu } from '@repo/ui/dropdown-menu';
-import { mockVehicles } from '../../lib/mock-data';
+import React from 'react';
+import { ToggleGroup, ToggleGroupItem } from '@repo/ui/toggle-group';
 
-export function VehicleFilters() {
-  const [minYear, setMinYear] = useState<number | null>(null);
-  const [maxYear, setMaxYear] = useState<number | null>(null);
-  const [make, setMake] = useState<string | null>(null);
-  const [model, setModel] = useState<string | null>(null);
+export type FilterState = {
+  vehicleType: string;
+  make: string;
+  drivetrain: string;
+};
 
-  const years = Array.from(new Set(mockVehicles.map(v => v.year))).sort((a, b) => b - a);
-  const makes = Array.from(new Set(mockVehicles.map(v => v.make)));
-  const models = Array.from(new Set(mockVehicles.filter(v => !make || v.make === make).map(v => v.model)));
+type VehicleFiltersProps = {
+  filters: FilterState;
+  onFilterChange: (filters: FilterState) => void;
+};
+
+export function VehicleFilters({ filters, onFilterChange }: VehicleFiltersProps) {
+  const handleValueChange = (key: keyof FilterState) => (value: string) => {
+    onFilterChange({ ...filters, [key]: value });
+  };
 
   return (
-    <div className="flex gap-4 mb-8">
-      <DropdownMenu
-        options={years.map(y => ({ label: y.toString(), onClick: () => setMinYear(y) }))}
-      >
-        {minYear || 'Min Year'}
-      </DropdownMenu>
-      <DropdownMenu
-        options={years.map(y => ({ label: y.toString(), onClick: () => setMaxYear(y) }))}
-      >
-        {maxYear || 'Max Year'}
-      </DropdownMenu>
-      <DropdownMenu
-        options={makes.map(m => ({ label: m, onClick: () => setMake(m) }))}
-      >
-        {make || 'Make'}
-      </DropdownMenu>
-      <DropdownMenu
-        options={models.map(m => ({ label: m, onClick: () => setModel(m) }))}
-      >
-        {model || 'Model'}
-      </DropdownMenu>
+    <div className="flex flex-wrap gap-4 mb-8">
+      <ToggleGroup type="single" value={filters.vehicleType} onValueChange={handleValueChange('vehicleType')}>
+        <ToggleGroupItem value="all">All</ToggleGroupItem>
+        <ToggleGroupItem value="Coupe">Coupe</ToggleGroupItem>
+        <ToggleGroupItem value="Sedan">Sedan</ToggleGroupItem>
+        <ToggleGroupItem value="SUV">SUV</ToggleGroupItem>
+        <ToggleGroupItem value="Truck">Truck</ToggleGroupItem>
+        <ToggleGroupItem value="Hatchback">Hatchback</ToggleGroupItem>
+      </ToggleGroup>
+      <ToggleGroup type="single" value={filters.make} onValueChange={handleValueChange('make')}>
+        <ToggleGroupItem value="all">All</ToggleGroupItem>
+        <ToggleGroupItem value="Honda">Honda</ToggleGroupItem>
+        <ToggleGroupItem value="Nissan">Nissan</ToggleGroupItem>
+        <ToggleGroupItem value="BMW">BMW</ToggleGroupItem>
+        <ToggleGroupItem value="Toyota">Toyota</ToggleGroupItem>
+        <ToggleGroupItem value="Ford">Ford</ToggleGroupItem>
+      </ToggleGroup>
+      <ToggleGroup type="single" value={filters.drivetrain} onValueChange={handleValueChange('drivetrain')}>
+        <ToggleGroupItem value="all">All</ToggleGroupItem>
+        <ToggleGroupItem value="RWD">RWD</ToggleGroupItem>
+        <ToggleGroupItem value="FWD">FWD</ToggleGroupItem>
+        <ToggleGroupItem value="AWD">AWD</ToggleGroupItem>
+      </ToggleGroup>
     </div>
   );
 }
