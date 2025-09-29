@@ -29,12 +29,12 @@ export function GridCard({
               x={0}
               y={0}
               squares={getRandomPattern(5)}
-              className="fill-border/50 stroke-border absolute inset-0 size-full translate-y-2 transition-transform duration-150 ease-out group-hover:translate-y-0"
+              className="fill-border/50 stroke-border absolute inset-0 size-full translate-y-2 md:transition-transform duration-150 ease-out md:group-hover:translate-y-0"
             />
           </div>
           <div
             className={cn(
-              'absolute -inset-[10%] opacity-0 blur-[50px] transition-opacity duration-150 group-hover:opacity-10',
+              'absolute -inset-[10%] opacity-0 blur-[50px] md:transition-opacity duration-150 md:group-hover:opacity-10',
               'bg-[conic-gradient(#F35066_0deg,#F35066_117deg,#9071F9_180deg,#5182FC_240deg,#F35066_360deg)]'
             )}
           />
