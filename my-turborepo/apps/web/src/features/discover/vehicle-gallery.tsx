@@ -1,8 +1,8 @@
 'use client';
 
 import React from 'react';
-import Image from 'next/image';
-import { Card, CardHeader, CardTitle, CardContent } from '@repo/ui/card';
+import { ImageWithFallback } from '../../components/image-with-fallback';
+import toast from 'react-hot-toast';
 import { FlipReveal, FlipRevealItem } from '@repo/ui/flip-reveal';
 import type { Vehicle } from '@repo/types';
 import type { FilterState } from './vehicle-filters';
@@ -34,7 +34,7 @@ export function VehicleGallery({ vehicles, filters }: VehicleGalleryProps) {
       showClass="flex"
       hideClass="hidden"
     >
-      {vehicles.map((vehicle) => (
+      {filteredVehicles.map((vehicle) => (
         <FlipRevealItem key={vehicle.id} flipKey={vehicle.id}>
           <div className="bg-black/50 backdrop-blur-lg rounded-2xl p-4 text-white flex flex-col gap-4">
             <div className="flex justify-between items-center text-xs text-neutral-400">
@@ -44,20 +44,21 @@ export function VehicleGallery({ vehicles, filters }: VehicleGalleryProps) {
               </div>
               <span>{new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</span>
             </div>
-            <Image
-              src={vehicle.imageUrl || "/placeholder.svg"}
+            <ImageWithFallback
+              src={vehicle.imageUrl || ''}
+              fallbackSrc="/branding/fallback-logo.png"
               alt={`${vehicle.make} ${vehicle.model}`}
               width={400}
               height={225}
-              className="rounded-lg object-cover aspect-video"
+              className="rounded-lg object-cover aspect-video bg-black/20"
             />
             <div className="text-center">
               <h3 className="font-bold text-lg">{vehicle.year} {vehicle.make} {vehicle.model}</h3>
               <p className="text-neutral-400 text-sm">{vehicle.trim}</p>
             </div>
             <div className="flex gap-2">
-              <button onClick={() => alert('Vehicle details coming soon!')} className="bg-white/10 hover:bg-white/20 transition-colors w-full py-2 rounded-lg text-sm">Vehicle Details</button>
-              <button onClick={() => alert('Added to your garage!')} className="bg-white/10 hover:bg-white/20 transition-colors w-full py-2 rounded-lg text-sm">Add to Garage</button>
+              <button onClick={() => toast.success('Vehicle details coming soon!')} className="bg-white/10 hover:bg-white/20 transition-colors w-full py-2 rounded-lg text-sm">Vehicle Details</button>
+              <button onClick={() => toast.success('Added to your garage!')} className="bg-white/10 hover:bg-white/20 transition-colors w-full py-2 rounded-lg text-sm">Add to Garage</button>
             </div>
             <div className="bg-green-500/20 text-green-400 text-xs text-center py-2 rounded-lg">
               Currently High on Creativity

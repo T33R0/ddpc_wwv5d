@@ -10,7 +10,7 @@ export default function Discover() {
 
   return (
     <section className="py-12">
-      <div className="container px-4 md:px-6">
+      <div className="container px-4 md:px-6 pt-24">
                 <VehicleFilters filters={filters} onFilterChange={setFilters} />
         <VehicleGallery vehicles={mockVehicles} filters={filters} />
       </div>

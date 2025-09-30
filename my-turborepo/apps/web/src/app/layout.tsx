@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
-import { Header } from '@repo/ui/header';
+import { Header } from "@repo/ui/header";
+import { Toaster } from 'react-hot-toast';
 import { Footer } from '@repo/ui/footer';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import './globals.css';
@@ -21,6 +22,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body>
         <div className="flex flex-col min-h-screen bg-black">
           <Header />
+          <Toaster />
           <main className="flex-grow">
             {children}
           </main>
