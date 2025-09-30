@@ -11,8 +11,7 @@ export default function Discover() {
   return (
     <section className="py-12">
       <div className="container px-4 md:px-6">
-        <h1 className="text-4xl font-bold tracking-tighter mb-8 pt-20">Discover Projects</h1>
-        <VehicleFilters filters={filters} onFilterChange={setFilters} />
+                <VehicleFilters filters={filters} onFilterChange={setFilters} />
         <VehicleGallery vehicles={mockVehicles} filters={filters} />
       </div>
     </section>

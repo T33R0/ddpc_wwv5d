@@ -18,6 +18,7 @@ export interface Vehicle {
   drivetrain?: 'RWD' | 'FWD' | 'AWD';
   doors?: 2 | 3 | 4;
   vehicleType?: 'Sedan' | 'Coupe' | 'SUV' | 'Truck' | 'Hatchback';
+  trim?: string;
 }
 
 export interface WorkItem {

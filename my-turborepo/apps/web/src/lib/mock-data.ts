@@ -34,6 +34,7 @@ export const mockVehicles: Vehicle[] = [
     drivetrain: "RWD",
     doors: 2,
     vehicleType: "Coupe",
+    trim: "AP2",
   },
   {
     id: "vehicle-2",
@@ -47,6 +48,7 @@ export const mockVehicles: Vehicle[] = [
     drivetrain: "RWD",
     doors: 2,
     vehicleType: "Coupe",
+    trim: "SE",
   },
   {
     id: "vehicle-3",
@@ -60,6 +62,7 @@ export const mockVehicles: Vehicle[] = [
     drivetrain: "RWD",
     doors: 2,
     vehicleType: "Coupe",
+    trim: "Sport Evolution",
   },
   {
     id: "vehicle-4",
@@ -73,6 +76,7 @@ export const mockVehicles: Vehicle[] = [
     drivetrain: "RWD",
     doors: 2,
     vehicleType: "Coupe",
+    trim: "Twin Turbo",
   },
   {
     id: "vehicle-5",
@@ -86,6 +90,7 @@ export const mockVehicles: Vehicle[] = [
     drivetrain: "RWD",
     doors: 2,
     vehicleType: "Coupe",
+    trim: "GT",
   },
   {
     id: "vehicle-6",
@@ -99,6 +104,7 @@ export const mockVehicles: Vehicle[] = [
     drivetrain: "RWD",
     doors: 2,
     vehicleType: "Coupe",
+    trim: "Stingray",
   },
   {
     id: "vehicle-7",
@@ -112,6 +118,7 @@ export const mockVehicles: Vehicle[] = [
     drivetrain: "RWD",
     doors: 2,
     vehicleType: "Coupe",
+    trim: "Touring",
   },
   {
     id: "vehicle-8",
@@ -125,6 +132,7 @@ export const mockVehicles: Vehicle[] = [
     drivetrain: "AWD",
     doors: 2,
     vehicleType: "Coupe",
+    trim: "V10 Plus",
   },
   {
     id: "vehicle-9",
@@ -138,6 +146,7 @@ export const mockVehicles: Vehicle[] = [
     drivetrain: "AWD",
     doors: 2,
     vehicleType: "Coupe",
+    trim: "Evo",
   },
   {
     id: "vehicle-10",
@@ -151,6 +160,7 @@ export const mockVehicles: Vehicle[] = [
     drivetrain: "RWD",
     doors: 2,
     vehicleType: "Coupe",
+    trim: "Pista",
   },
   {
     id: "vehicle-11",
@@ -164,6 +174,7 @@ export const mockVehicles: Vehicle[] = [
     drivetrain: "RWD",
     doors: 2,
     vehicleType: "Coupe",
+    trim: "Spider",
   },
   {
     id: "vehicle-12",
@@ -177,6 +188,7 @@ export const mockVehicles: Vehicle[] = [
     drivetrain: "AWD",
     doors: 4,
     vehicleType: "Sedan",
+    trim: "Plaid",
   },
   {
     id: "vehicle-13",
@@ -190,6 +202,7 @@ export const mockVehicles: Vehicle[] = [
     drivetrain: "AWD",
     doors: 4,
     vehicleType: "Truck",
+    trim: "Launch Edition",
   },
   {
     id: "vehicle-14",
@@ -203,6 +216,7 @@ export const mockVehicles: Vehicle[] = [
     drivetrain: "AWD",
     doors: 4,
     vehicleType: "Truck",
+    trim: "Platinum",
   },
   {
     id: "vehicle-15",
@@ -216,6 +230,7 @@ export const mockVehicles: Vehicle[] = [
     drivetrain: "AWD",
     doors: 4,
     vehicleType: "Truck",
+    trim: "Edition 1",
   },
   {
     id: "vehicle-16",
@@ -229,6 +244,7 @@ export const mockVehicles: Vehicle[] = [
     drivetrain: "AWD",
     doors: 4,
     vehicleType: "Sedan",
+    trim: "STI",
   },
   {
     id: "vehicle-17",
@@ -242,6 +258,7 @@ export const mockVehicles: Vehicle[] = [
     drivetrain: "AWD",
     doors: 4,
     vehicleType: "Sedan",
+    trim: "Final Edition",
   },
   {
     id: "vehicle-18",
@@ -255,6 +272,7 @@ export const mockVehicles: Vehicle[] = [
     drivetrain: "AWD",
     doors: 4,
     vehicleType: "Hatchback",
+    trim: "R",
   },
   {
     id: "vehicle-19",
@@ -268,6 +286,7 @@ export const mockVehicles: Vehicle[] = [
     drivetrain: "FWD",
     doors: 4,
     vehicleType: "Hatchback",
+    trim: "Championship White",
   },
   {
     id: "vehicle-20",
@@ -281,6 +300,7 @@ export const mockVehicles: Vehicle[] = [
     drivetrain: "FWD",
     doors: 3,
     vehicleType: "Hatchback",
+    trim: "Performance Package",
   },
   {
     id: "vehicle-21",
@@ -294,6 +314,7 @@ export const mockVehicles: Vehicle[] = [
     drivetrain: "AWD",
     doors: 4,
     vehicleType: "SUV",
+    trim: "Rubicon",
   },
   {
     id: "vehicle-22",
@@ -307,6 +328,7 @@ export const mockVehicles: Vehicle[] = [
     drivetrain: "AWD",
     doors: 4,
     vehicleType: "SUV",
+    trim: "Wildtrak",
   },
   {
     id: "vehicle-23",
@@ -320,6 +342,7 @@ export const mockVehicles: Vehicle[] = [
     drivetrain: "AWD",
     doors: 4,
     vehicleType: "SUV",
+    trim: "TRD Pro",
   },
   {
     id: "vehicle-24",
@@ -333,6 +356,7 @@ export const mockVehicles: Vehicle[] = [
     drivetrain: "AWD",
     doors: 4,
     vehicleType: "SUV",
+    trim: "110",
   },
   {
     id: "vehicle-25",
@@ -346,6 +370,7 @@ export const mockVehicles: Vehicle[] = [
     drivetrain: "AWD",
     doors: 4,
     vehicleType: "SUV",
+    trim: "G 63",
   },
   {
     id: "vehicle-26",
@@ -359,6 +384,7 @@ export const mockVehicles: Vehicle[] = [
     drivetrain: "AWD",
     doors: 4,
     vehicleType: "Truck",
+    trim: "TRX",
   },
   {
     id: "vehicle-27",
@@ -372,6 +398,7 @@ export const mockVehicles: Vehicle[] = [
     drivetrain: "AWD",
     doors: 4,
     vehicleType: "Truck",
+    trim: "Raptor",
   },
   {
     id: "vehicle-28",
@@ -385,6 +412,7 @@ export const mockVehicles: Vehicle[] = [
     drivetrain: "AWD",
     doors: 4,
     vehicleType: "Truck",
+    trim: "High Country",
   },
   {
     id: "vehicle-29",
@@ -398,6 +426,7 @@ export const mockVehicles: Vehicle[] = [
     drivetrain: "AWD",
     doors: 4,
     vehicleType: "Truck",
+    trim: "Denali",
   },
   {
     id: "vehicle-30",
@@ -411,6 +440,7 @@ export const mockVehicles: Vehicle[] = [
     drivetrain: "AWD",
     doors: 4,
     vehicleType: "Truck",
+    trim: "TRD Pro",
   },
 ];
 

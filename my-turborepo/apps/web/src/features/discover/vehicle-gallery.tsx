@@ -36,21 +36,33 @@ export function VehicleGallery({ vehicles, filters }: VehicleGalleryProps) {
     >
       {vehicles.map((vehicle) => (
         <FlipRevealItem key={vehicle.id} flipKey={vehicle.id}>
-          <Card>
-            <CardHeader>
-              <Image
-                src={vehicle.imageUrl || "/placeholder.svg"}
-                alt={`${vehicle.make} ${vehicle.model}`}
-                width={400}
-                height={225}
-                className="rounded-t-lg object-cover aspect-video"
-              />
-            </CardHeader>
-            <CardContent>
-              <CardTitle className="text-2xl">{vehicle.make} {vehicle.model}</CardTitle>
-              <p className="text-muted-foreground">{vehicle.year}</p>
-            </CardContent>
-          </Card>
+          <div className="bg-black/50 backdrop-blur-lg rounded-2xl p-4 text-white flex flex-col gap-4">
+            <div className="flex justify-between items-center text-xs text-neutral-400">
+              <div className="flex items-center gap-2">
+                <span className="w-2 h-2 rounded-full bg-green-500"></span>
+                In {Math.floor(Math.random() * 100)} garages
+              </div>
+              <span>{new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</span>
+            </div>
+            <Image
+              src={vehicle.imageUrl || "/placeholder.svg"}
+              alt={`${vehicle.make} ${vehicle.model}`}
+              width={400}
+              height={225}
+              className="rounded-lg object-cover aspect-video"
+            />
+            <div className="text-center">
+              <h3 className="font-bold text-lg">{vehicle.year} {vehicle.make} {vehicle.model}</h3>
+              <p className="text-neutral-400 text-sm">{vehicle.trim}</p>
+            </div>
+            <div className="flex gap-2">
+              <button onClick={() => alert('Vehicle details coming soon!')} className="bg-white/10 hover:bg-white/20 transition-colors w-full py-2 rounded-lg text-sm">Vehicle Details</button>
+              <button onClick={() => alert('Added to your garage!')} className="bg-white/10 hover:bg-white/20 transition-colors w-full py-2 rounded-lg text-sm">Add to Garage</button>
+            </div>
+            <div className="bg-green-500/20 text-green-400 text-xs text-center py-2 rounded-lg">
+              Currently High on Creativity
+            </div>
+          </div>
         </FlipRevealItem>
       ))}
     </FlipReveal>
