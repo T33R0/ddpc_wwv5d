@@ -1,7 +1,6 @@
 "use client";
 
 import { ComponentProps, useRef } from "react";
-
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import Flip from "gsap/Flip";
@@ -71,8 +70,7 @@ export const FlipReveal = ({ keys, hideClass = "", showClass = "", ...props }: F
                 },
             });
         },
-
-        { scope: wrapperRef, dependencies: [keys] },
+        { scope: wrapperRef, dependencies: [keys], revertOnUpdate: true }
     );
 
     return <div {...props} ref={wrapperRef} />;
