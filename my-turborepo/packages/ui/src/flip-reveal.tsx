@@ -1,6 +1,7 @@
 "use client";
 
 import { ComponentProps, useRef } from "react";
+
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import Flip from "gsap/Flip";
@@ -33,9 +34,6 @@ export const FlipReveal = ({ keys, hideClass = "", showClass = "", ...props }: F
             const items = gsap.utils.toArray<HTMLDivElement>("[data-flip]");
             const state = Flip.getState(items);
 
-            // Set a minimum height to prevent the footer from jumping
-            wrapperRef.current.style.minHeight = `${wrapperRef.current.offsetHeight}px`;
-
             items.forEach((item) => {
                 const key = item.getAttribute("data-flip");
                 if (isShow(key)) {
@@ -49,7 +47,7 @@ export const FlipReveal = ({ keys, hideClass = "", showClass = "", ...props }: F
 
             Flip.from(state, {
                 duration: 0.6,
-                scale: false,
+                scale: true,
                 ease: "power1.inOut",
                 stagger: 0.05,
                 absolute: true,
@@ -64,13 +62,10 @@ export const FlipReveal = ({ keys, hideClass = "", showClass = "", ...props }: F
                         },
                     ),
                 onLeave: (elements) => gsap.to(elements, { opacity: 0, scale: 0, duration: 0.8 }),
-                onComplete: () => {
-                    // Use gsap.set to remove the minHeight to avoid a layout flash
-                    gsap.set(wrapperRef.current, { minHeight: "" });
-                },
             });
         },
-        { scope: wrapperRef, dependencies: [keys], revertOnUpdate: true }
+
+        { scope: wrapperRef, dependencies: [keys] },
     );
 
     return <div {...props} ref={wrapperRef} />;
