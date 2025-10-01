@@ -3,7 +3,7 @@ const nextConfig = {
   transpilePackages: ["@repo/assets"],
 };
 
-module.exports = {
+const config = {
   images: {
     remotePatterns: [
       {
@@ -14,3 +14,5 @@ module.exports = {
   },
   ...nextConfig,
 };
+
+export default config;
