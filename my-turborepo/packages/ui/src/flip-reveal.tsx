@@ -66,10 +66,8 @@ export const FlipReveal = ({ keys, hideClass = "", showClass = "", ...props }: F
                     ),
                 onLeave: (elements) => gsap.to(elements, { opacity: 0, scale: 0, duration: 0.8 }),
                 onComplete: () => {
-                    // Remove the minimum height after the animation is complete
-                    if (wrapperRef.current) {
-                        wrapperRef.current.style.minHeight = '';
-                    }
+                    // Use gsap.set to remove the minHeight to avoid a layout flash
+                    gsap.set(wrapperRef.current, { minHeight: "" });
                 },
             });
         },
