@@ -34,7 +34,7 @@ export function VehicleGallery({ vehicles, filters }: VehicleGalleryProps) {
       showClass="flex"
       hideClass="hidden"
     >
-      {vehicles.map((vehicle) => (
+      {filteredVehicles.map((vehicle) => (
         <FlipRevealItem key={vehicle.id} flipKey={vehicle.id} className="group transition-all duration-300">
           <div className="bg-black/50 backdrop-blur-lg rounded-2xl p-4 text-white flex flex-col gap-4 border border-transparent transition-all duration-300 group-hover:scale-105 group-hover:border-lime-400/50 group-hover:shadow-lg group-hover:shadow-lime-500/20">
             <div className="flex justify-between items-center text-xs text-neutral-400">
