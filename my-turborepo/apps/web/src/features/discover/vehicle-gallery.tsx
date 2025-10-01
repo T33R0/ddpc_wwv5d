@@ -44,7 +44,7 @@ export function VehicleGallery({ vehicles, filters }: VehicleGalleryProps) {
               alt={`${vehicle.make} ${vehicle.model}`}
               width={400}
               height={225}
-              className="rounded-lg object-cover aspect-video bg-black/20"
+              className="rounded-lg object-cover aspect-video bg-white/10"
             />
             <div className="text-center">
               <h3 className="font-bold text-lg">{vehicle.year} {vehicle.make} {vehicle.model}</h3>
