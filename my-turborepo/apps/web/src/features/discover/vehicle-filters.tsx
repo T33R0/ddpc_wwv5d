@@ -28,16 +28,17 @@ export function VehicleFilters({ filters, onFilterChange }: VehicleFiltersProps)
   };
 
   const years = Array.from(new Set(mockVehicles.map(v => v.year))).sort((a, b) => b - a);
-  const makes = Array.from(new Set(mockVehicles.map(v => v.make)));
-  const models = Array.from(new Set(mockVehicles.filter(v => !filters.make || v.make === filters.make).map(v => v.model)));
-  const engineTypes = Array.from(new Set(mockVehicles.map(v => v.engineType).filter(Boolean))) as string[];
-  const fuelTypes = Array.from(new Set(mockVehicles.map(v => v.fuelType).filter(Boolean))) as string[];
-  const drivetrains = Array.from(new Set(mockVehicles.map(v => v.drivetrain).filter(Boolean))) as string[];
+  const makes = Array.from(new Set(mockVehicles.map(v => v.make))).sort();
+  const models = Array.from(new Set(mockVehicles.filter(v => !filters.make || v.make === filters.make).map(v => v.model))).sort();
+  const engineTypes = Array.from(new Set(mockVehicles.map(v => v.engineType).filter(Boolean))).sort() as string[];
+  const fuelTypes = Array.from(new Set(mockVehicles.map(v => v.fuelType).filter(Boolean))).sort() as string[];
+  const drivetrains = Array.from(new Set(mockVehicles.map(v => v.drivetrain).filter(Boolean))).sort() as string[];
   const doors = Array.from(new Set(mockVehicles.map(v => v.doors).filter(Boolean))) as number[];
-  const vehicleTypes = Array.from(new Set(mockVehicles.map(v => v.vehicleType).filter(Boolean))) as string[];
+  const vehicleTypes = Array.from(new Set(mockVehicles.map(v => v.vehicleType).filter(Boolean))).sort() as string[];
 
   return (
     <div className="flex flex-wrap items-center gap-4 mb-8">
+      <div className="flex flex-wrap items-center gap-4">
       <DropdownMenu options={[{ label: 'All', onClick: () => handleValueChange('minYear')(null) }, ...years.map(y => ({ label: y.toString(), onClick: () => handleValueChange('minYear')(y) }))]} >{filters.minYear || 'Min Year'}</DropdownMenu>
       <DropdownMenu options={[{ label: 'All', onClick: () => handleValueChange('maxYear')(null) }, ...years.map(y => ({ label: y.toString(), onClick: () => handleValueChange('maxYear')(y) }))]} >{filters.maxYear || 'Max Year'}</DropdownMenu>
       <DropdownMenu options={[{ label: 'All', onClick: () => handleValueChange('make')(null) }, ...makes.map(m => ({ label: m, onClick: () => handleValueChange('make')(m) }))]} >{filters.make || 'Make'}</DropdownMenu>
@@ -46,8 +47,10 @@ export function VehicleFilters({ filters, onFilterChange }: VehicleFiltersProps)
       <DropdownMenu options={[{ label: 'All', onClick: () => handleValueChange('fuelType')(null) }, ...fuelTypes.map(f => ({ label: f, onClick: () => handleValueChange('fuelType')(f) }))]} >{filters.fuelType || 'Fuel'}</DropdownMenu>
       <DropdownMenu options={[{ label: 'All', onClick: () => handleValueChange('drivetrain')(null) }, ...drivetrains.map(d => ({ label: d, onClick: () => handleValueChange('drivetrain')(d) }))]} >{filters.drivetrain || 'Drivetrain'}</DropdownMenu>
       <DropdownMenu options={[{ label: 'All', onClick: () => handleValueChange('doors')(null) }, ...doors.map(d => ({ label: d.toString(), onClick: () => handleValueChange('doors')(d) }))]} >{filters.doors || 'Doors'}</DropdownMenu>
-      <DropdownMenu options={[{ label: 'All', onClick: () => handleValueChange('vehicleType')(null) }, ...vehicleTypes.map(v => ({ label: v, onClick: () => handleValueChange('vehicleType')(v) }))]} >{filters.vehicleType || 'Type'}</DropdownMenu>
-      <Button variant="outline" onClick={() => onFilterChange({ minYear: null, maxYear: null, make: null, model: null, engineType: null, fuelType: null, drivetrain: null, doors: null, vehicleType: null })}>Reset</Button>
+        <DropdownMenu options={[{ label: 'All', onClick: () => handleValueChange('vehicleType')(null) }, ...vehicleTypes.map(v => ({ label: v, onClick: () => handleValueChange('vehicleType')(v) }))]} >{filters.vehicleType || 'Type'}</DropdownMenu>
+      </div>
+      <div className="flex-grow" />
+      <Button variant="destructive" onClick={() => onFilterChange({ minYear: null, maxYear: null, make: null, model: null, engineType: null, fuelType: null, drivetrain: null, doors: null, vehicleType: null })}>Reset</Button>
     </div>
   );
 }

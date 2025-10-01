@@ -3,6 +3,7 @@
 import { Button } from "./button";
 import { ChevronDown } from "lucide-react";
 import React, { useState } from "react";
+import { useClickOutside } from "./hooks/use-click-outside";
 import { motion, AnimatePresence } from "framer-motion";
 
 type DropdownMenuProps = {
@@ -20,8 +21,10 @@ export function DropdownMenu({ options, children }: DropdownMenuProps) {
     setIsOpen(!isOpen);
   };
 
+  const ref = useClickOutside(() => setIsOpen(false));
+
   return (
-    <div className="relative">
+    <div className="relative" ref={ref}>
       <Button
         onClick={toggleDropdown}
         variant="outline"
