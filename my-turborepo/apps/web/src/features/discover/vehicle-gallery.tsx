@@ -3,7 +3,6 @@
 import React from 'react';
 import { ImageWithFallback } from '../../components/image-with-fallback';
 import toast from 'react-hot-toast';
-import { FlipReveal, FlipRevealItem } from '@repo/ui/flip-reveal';
 import type { Vehicle } from '@repo/types';
 import type { FilterState } from './vehicle-filters';
 
@@ -28,14 +27,9 @@ export function VehicleGallery({ vehicles, filters }: VehicleGalleryProps) {
   });
 
   return (
-    <FlipReveal
-      keys={filteredVehicles.map(v => v.id)}
-      className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 items-start"
-      showClass="flex"
-      hideClass="hidden"
-    >
+    <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 items-start">
       {filteredVehicles.map((vehicle) => (
-        <FlipRevealItem key={vehicle.id} flipKey={vehicle.id} className="group transition-all duration-300">
+        <div key={vehicle.id} className="group transition-all duration-300">
           <div className="bg-black/50 backdrop-blur-lg rounded-2xl p-4 text-white flex flex-col gap-4 border border-transparent transition-all duration-300 group-hover:scale-105 group-hover:border-lime-400/50 group-hover:shadow-lg group-hover:shadow-lime-500/20">
             <div className="flex justify-between items-center text-xs text-neutral-400">
               <div className="flex items-center gap-2">
@@ -64,8 +58,8 @@ export function VehicleGallery({ vehicles, filters }: VehicleGalleryProps) {
               {Math.floor(Math.random() * 50)} public builds
             </div>
           </div>
-        </FlipRevealItem>
+        </div>
       ))}
-    </FlipReveal>
+    </div>
   );
 }
