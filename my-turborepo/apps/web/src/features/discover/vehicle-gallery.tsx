@@ -36,7 +36,7 @@ export function VehicleGallery({ vehicles, filters }: VehicleGalleryProps) {
     >
       {vehicles.map((vehicle) => (
         <FlipRevealItem key={vehicle.id} flipKey={vehicle.id}>
-          <div className="bg-black/50 backdrop-blur-lg rounded-2xl p-4 text-white flex flex-col gap-4 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-lime-500/30">
+          <div className="bg-black/50 backdrop-blur-lg rounded-2xl p-4 text-white flex flex-col gap-4 border border-transparent transition-all duration-300 hover:scale-105 hover:border-lime-400/50 hover:shadow-lg hover:shadow-lime-500/20">
             <div className="flex justify-between items-center text-xs text-neutral-400">
               <div className="flex items-center gap-2">
                 <span className="w-2 h-2 rounded-full bg-green-500"></span>

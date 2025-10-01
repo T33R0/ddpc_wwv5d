@@ -34,6 +34,9 @@ export const FlipReveal = ({ keys, hideClass = "", showClass = "", ...props }: F
             const items = gsap.utils.toArray<HTMLDivElement>("[data-flip]");
             const state = Flip.getState(items);
 
+            // Set a minimum height to prevent the footer from jumping
+            wrapperRef.current.style.minHeight = `${wrapperRef.current.offsetHeight}px`;
+
             items.forEach((item) => {
                 const key = item.getAttribute("data-flip");
                 if (isShow(key)) {
@@ -62,6 +65,12 @@ export const FlipReveal = ({ keys, hideClass = "", showClass = "", ...props }: F
                         },
                     ),
                 onLeave: (elements) => gsap.to(elements, { opacity: 0, scale: 0, duration: 0.8 }),
+                onComplete: () => {
+                    // Remove the minimum height after the animation is complete
+                    if (wrapperRef.current) {
+                        wrapperRef.current.style.minHeight = '';
+                    }
+                },
             });
         },
 
