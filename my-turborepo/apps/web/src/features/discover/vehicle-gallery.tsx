@@ -30,7 +30,7 @@ export function VehicleGallery({ vehicles, filters }: VehicleGalleryProps) {
   return (
     <FlipReveal
       keys={filteredVehicles.map(v => v.id)}
-      className="grid gap-6 md:grid-cols-2 lg:grid-cols-3"
+      className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 items-start"
       showClass="flex"
       hideClass="hidden"
     >

@@ -50,7 +50,7 @@ export const FlipReveal = ({ keys, hideClass = "", showClass = "", ...props }: F
 
             Flip.from(state, {
                 duration: 0.6,
-                scale: true,
+                scale: false,
                 ease: "power1.inOut",
                 stagger: 0.05,
                 absolute: true,
