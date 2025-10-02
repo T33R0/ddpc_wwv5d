@@ -23,32 +23,46 @@ const VehicleDetailsModal = ({ vehicle, onClose }: VehicleDetailsModalProps) => 
     switch (activeTab) {
       case 'Overview':
         return (
-          <div>
-            <p><strong>Body Type:</strong> {vehicle.body_type}</p>
-            <p><strong>Doors:</strong> {vehicle.doors}</p>
-            <p><strong>Seating:</strong> {vehicle.total_seating}</p>
-            <p><strong>Exterior Colors:</strong> {vehicle.colors_exterior}</p>
-            <p><strong>Interior Colors:</strong> {vehicle.colors_interior}</p>
+          <div className={styles.overviewLayout}>
+            <div>
+              <p><strong>Body Type:</strong> {vehicle.body_type}</p>
+              <p><strong>Doors:</strong> {vehicle.doors}</p>
+              <p><strong>Seating:</strong> {vehicle.total_seating}</p>
+            </div>
+            <div>
+              <p><strong>Exterior Colors:</strong> {vehicle.colors_exterior}</p>
+              <p><strong>Interior Colors:</strong> {vehicle.colors_interior}</p>
+            </div>
           </div>
         );
       case 'Powertrain':
         return (
-          <div>
-            <p><strong>Engine:</strong> {vehicle.cylinders} cylinders, {vehicle.engine_size_l}L</p>
-            <p><strong>Horsepower:</strong> {vehicle.horsepower_hp} @ {vehicle.horsepower_rpm} RPM</p>
-            <p><strong>Torque:</strong> {vehicle.torque_ft_lbs} lb-ft @ {vehicle.torque_rpm} RPM</p>
-            <p><strong>Drive Type:</strong> {vehicle.drive_type}</p>
-            <p><strong>Transmission:</strong> {vehicle.transmission}</p>
+          <div className={styles.tabContentLayout}>
+            <div className={styles.tabData}>
+              <p><strong>Engine:</strong> {vehicle.cylinders} cylinders, {vehicle.engine_size_l}L</p>
+              <p><strong>Horsepower:</strong> {vehicle.horsepower_hp} @ {vehicle.horsepower_rpm} RPM</p>
+              <p><strong>Torque:</strong> {vehicle.torque_ft_lbs} lb-ft @ {vehicle.torque_rpm} RPM</p>
+              <p><strong>Drive Type:</strong> {vehicle.drive_type}</p>
+              <p><strong>Transmission:</strong> {vehicle.transmission}</p>
+            </div>
+            <div className={styles.tabImage}>
+              <Image src="/branding/dyno-graph.png" alt="Dyno graph" width={400} height={225} />
+            </div>
           </div>
         );
       case 'Dimensions':
         return (
-          <div>
-            <p><strong>Length:</strong> {vehicle.length_in}&quot;</p>
-            <p><strong>Width:</strong> {vehicle.width_in}&quot;</p>
-            <p><strong>Height:</strong> {vehicle.height_in}&quot;</p>
-            <p><strong>Wheelbase:</strong> {vehicle.wheelbase_in}&quot;</p>
-            <p><strong>Curb Weight:</strong> {vehicle.curb_weight_lbs} lbs</p>
+          <div className={styles.tabContentLayout}>
+            <div className={styles.tabData}>
+              <p><strong>Length:</strong> {vehicle.length_in}&quot;</p>
+              <p><strong>Width:</strong> {vehicle.width_in}&quot;</p>
+              <p><strong>Height:</strong> {vehicle.height_in}&quot;</p>
+              <p><strong>Wheelbase:</strong> {vehicle.wheelbase_in}&quot;</p>
+              <p><strong>Curb Weight:</strong> {vehicle.curb_weight_lbs} lbs</p>
+            </div>
+            <div className={styles.tabImage}>
+              <Image src="/branding/turning-radius.png" alt="Turning radius diagram" width={400} height={225} />
+            </div>
           </div>
         );
       default:
