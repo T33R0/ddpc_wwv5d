@@ -17,7 +17,6 @@ export function VehicleGallery({ vehicles, filters }: VehicleGalleryProps) {
 
   const filteredVehicles = vehicles.filter(vehicle => {
     const vehicleYear = parseInt(vehicle.year, 10);
-    const vehicleDoors = vehicle.doors ? parseInt(vehicle.doors, 10) : null;
 
     return (
       (!filters.minYear || vehicleYear >= filters.minYear) &&
@@ -27,7 +26,7 @@ export function VehicleGallery({ vehicles, filters }: VehicleGalleryProps) {
       (!filters.engineType || vehicle.engine_type === filters.engineType) &&
       (!filters.fuelType || vehicle.fuel_type === filters.fuelType) &&
       (!filters.drivetrain || vehicle.drive_type === filters.drivetrain) &&
-      (!filters.doors || vehicleDoors === filters.doors) &&
+      (!filters.doors || vehicle.doors === filters.doors) &&
       (!filters.vehicleType || vehicle.car_classification === filters.vehicleType)
     );
   });

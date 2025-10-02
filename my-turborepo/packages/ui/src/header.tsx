@@ -7,7 +7,7 @@ import { AuthModal } from './auth-modal';
 import { ChatDrawer } from './chat-drawer';
 import { Button } from './button';
 import { GridCard } from './grid-card';
-import { Pricing } from './landing/Pricing';
+import { Pricing, PricingDropdown } from './landing/Pricing';
 import { ChevronDown, ChevronUp } from 'lucide-react';
 import {
   NavigationMenu,
@@ -36,7 +36,7 @@ export function Header() {
             <NavigationMenuItem>
               <NavigationMenuTrigger>Discover</NavigationMenuTrigger>
               <NavigationMenuContent>
-                <div className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
+                <div className="grid grid-cols-2 gap-3 p-4 w-full">
                   <GridCard title="Explore Vehicles" href="/discover">
                     Browse a curated collection of unique and interesting vehicles.
                   </GridCard>
@@ -49,7 +49,7 @@ export function Header() {
             <NavigationMenuItem>
               <NavigationMenuTrigger>Community</NavigationMenuTrigger>
               <NavigationMenuContent>
-                <div className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
+                <div className="grid grid-cols-2 gap-3 p-4 w-full">
                   <GridCard title="Community Builds" href="/community/builds">
                     See what others are building and share your own progress.
                   </GridCard>
@@ -62,9 +62,7 @@ export function Header() {
             <NavigationMenuItem>
               <NavigationMenuTrigger>Pricing</NavigationMenuTrigger>
               <NavigationMenuContent>
-                <div className="p-4 w-[600px]">
-                  <Pricing />
-                </div>
+                <PricingDropdown />
               </NavigationMenuContent>
             </NavigationMenuItem>
           </NavigationMenuList>
