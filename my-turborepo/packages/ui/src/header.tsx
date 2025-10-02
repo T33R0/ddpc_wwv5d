@@ -27,7 +27,7 @@ export function Header() {
       <AuthModal open={authModalOpen} onOpenChange={setAuthModalOpen} />
       <ChatDrawer open={chatDrawerOpen} onOpenChange={setChatDrawerOpen} />
     <header className="fixed top-0 left-0 right-0 z-50 bg-black/50 backdrop-blur-lg">
-      <div className="container mx-auto flex items-center justify-between p-4 text-white">
+      <div className="container mx-auto flex items-center justify-between p-4 text-white relative">
         <Link href="/">
           <Logo />
         </Link>
@@ -60,12 +60,6 @@ export function Header() {
               </NavigationMenuContent>
             </NavigationMenuItem>
             <NavigationMenuItem>
-                <button onClick={() => setChatDrawerOpen(true)} className="group flex items-center justify-center gap-1 px-4 py-2 text-sm font-medium text-white hover:bg-white/10 rounded-md transition-colors">
-                  Scrutineer
-                  {chatDrawerOpen ? <ChevronUp className="h-4 w-4" /> : <ChevronDown className="h-4 w-4" />}
-                </button>
-            </NavigationMenuItem>
-            <NavigationMenuItem>
               <NavigationMenuTrigger>Pricing</NavigationMenuTrigger>
               <NavigationMenuContent>
                 <div className="p-4 w-[600px]">
@@ -76,6 +70,17 @@ export function Header() {
           </NavigationMenuList>
         </NavigationMenu>
         <Button onClick={() => setAuthModalOpen(true)}>Sign In</Button>
+
+        {/* Scrutineer Tab - positioned at bottom of header */}
+        <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2">
+          <button
+            onClick={() => setChatDrawerOpen(!chatDrawerOpen)}
+            className="bg-black/80 backdrop-blur-sm border border-white/20 rounded-t-lg px-6 py-2 text-white hover:bg-black/90 transition-all duration-200 flex items-center gap-2 shadow-lg"
+          >
+            Scrutineer
+            {chatDrawerOpen ? <ChevronUp className="h-4 w-4" /> : <ChevronDown className="h-4 w-4" />}
+          </button>
+        </div>
       </div>
     </header>
     </>

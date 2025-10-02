@@ -19,7 +19,7 @@ type ChatDrawerProps = {
 export function ChatDrawer({ open, onOpenChange }: ChatDrawerProps) {
   return (
     <Drawer open={open} onOpenChange={onOpenChange} direction="top">
-      <DrawerContent className="h-[90vh] flex flex-col">
+      <DrawerContent className="h-[calc(100vh-80px)] mt-20 flex flex-col rounded-t-3xl">
         <DrawerHeader className="text-left flex-shrink-0">
           <DrawerTitle>Scrutineer</DrawerTitle>
         </DrawerHeader>
