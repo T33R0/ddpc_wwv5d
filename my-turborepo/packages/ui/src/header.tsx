@@ -72,13 +72,13 @@ export function Header() {
         <Button onClick={() => setAuthModalOpen(true)}>Sign In</Button>
 
         {/* Scrutineer Tab - positioned at bottom of header */}
-        <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2">
+        <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2">
           <button
             onClick={() => setChatDrawerOpen(!chatDrawerOpen)}
-            className="bg-black/80 backdrop-blur-sm border border-white/20 rounded-t-lg px-6 py-2 text-white hover:bg-black/90 transition-all duration-200 flex items-center gap-2 shadow-lg"
+            className="bg-black/50 backdrop-blur-lg border border-white/20 rounded-b-lg h-10 px-4 py-2 text-sm font-medium text-white hover:bg-slate-800/50 transition-colors flex items-center gap-2 shadow-lg"
           >
             Scrutineer
-            {chatDrawerOpen ? <ChevronUp className="h-4 w-4" /> : <ChevronDown className="h-4 w-4" />}
+            {chatDrawerOpen ? <ChevronUp className="h-3 w-3" /> : <ChevronDown className="h-3 w-3" />}
           </button>
         </div>
       </div>

@@ -26,11 +26,15 @@ export function ChatDrawer({ open, onOpenChange }: ChatDrawerProps) {
         <div className="overflow-y-auto flex-grow">
           <ChatWindow />
         </div>
-        <DrawerClose asChild>
-          <button className="absolute bottom-4 left-1/2 -translate-x-1/2 p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors">
-            <ChevronUp className="h-6 w-6 text-white" />
-          </button>
-        </DrawerClose>
+        {/* Tab-like close button at bottom of modal */}
+        <div className="flex justify-center pb-4">
+          <DrawerClose asChild>
+            <button className="bg-black/50 backdrop-blur-lg border border-white/20 rounded-b-lg h-10 px-4 py-2 text-sm font-medium text-white hover:bg-slate-800/50 transition-colors flex items-center gap-2 shadow-lg">
+              Scrutineer
+              <ChevronUp className="h-3 w-3" />
+            </button>
+          </DrawerClose>
+        </div>
       </DrawerContent>
     </Drawer>
   );

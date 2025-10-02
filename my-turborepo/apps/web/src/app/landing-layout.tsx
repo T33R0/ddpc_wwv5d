@@ -1,7 +1,6 @@
 'use client';
 
 import React from 'react';
-import { Footer } from '@repo/ui/footer';
 
 export default function LandingLayout({
   children,

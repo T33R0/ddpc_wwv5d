@@ -13,7 +13,7 @@ export type FilterState = {
   engineType: string | null;
   fuelType: string | null;
   drivetrain: string | null;
-  doors: number | null;
+  doors: string | null;
   vehicleType: string | null;
 };
 
@@ -23,18 +23,18 @@ type VehicleFiltersProps = {
 };
 
 export function VehicleFilters({ filters, onFilterChange }: VehicleFiltersProps) {
-  const handleValueChange = (key: keyof FilterState) => (value: any) => {
+  const handleValueChange = (key: keyof FilterState) => (value: string | number | null) => {
     onFilterChange({ ...filters, [key]: value });
   };
 
-  const years = Array.from(new Set(mockVehicles.map(v => v.year))).sort((a, b) => b - a);
+  const years = Array.from(new Set(mockVehicles.map(v => parseInt(v.year, 10)))).sort((a, b) => b - a);
   const makes = Array.from(new Set(mockVehicles.map(v => v.make))).sort();
   const models = Array.from(new Set(mockVehicles.filter(v => !filters.make || v.make === filters.make).map(v => v.model))).sort();
-  const engineTypes = Array.from(new Set(mockVehicles.map(v => v.engineType).filter(Boolean))).sort() as string[];
-  const fuelTypes = Array.from(new Set(mockVehicles.map(v => v.fuelType).filter(Boolean))).sort() as string[];
-  const drivetrains = Array.from(new Set(mockVehicles.map(v => v.drivetrain).filter(Boolean))).sort() as string[];
-  const doors = Array.from(new Set(mockVehicles.map(v => v.doors).filter(Boolean))) as number[];
-  const vehicleTypes = Array.from(new Set(mockVehicles.map(v => v.vehicleType).filter(Boolean))).sort() as string[];
+  const engineTypes = Array.from(new Set(mockVehicles.map(v => v.engine_type).filter(Boolean))).sort() as string[];
+  const fuelTypes = Array.from(new Set(mockVehicles.map(v => v.fuel_type).filter(Boolean))).sort() as string[];
+  const drivetrains = Array.from(new Set(mockVehicles.map(v => v.drive_type).filter(Boolean))).sort() as string[];
+  const doors = Array.from(new Set(mockVehicles.map(v => v.doors).filter(Boolean))).sort() as string[];
+  const vehicleTypes = Array.from(new Set(mockVehicles.map(v => v.car_classification).filter(Boolean))).sort() as string[];
 
   return (
     <div className="flex flex-wrap items-center gap-4 mb-8">

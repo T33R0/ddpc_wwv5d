@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Image from 'next/image';
 import styles from './vehicle-details-modal.module.css';
 import type { Vehicle } from '@repo/types';
 
@@ -43,10 +44,10 @@ const VehicleDetailsModal = ({ vehicle, onClose }: VehicleDetailsModalProps) => 
       case 'Dimensions':
         return (
           <div>
-            <p><strong>Length:</strong> {vehicle.length_in}"</p>
-            <p><strong>Width:</strong> {vehicle.width_in}"</p>
-            <p><strong>Height:</strong> {vehicle.height_in}"</p>
-            <p><strong>Wheelbase:</strong> {vehicle.wheelbase_in}"</p>
+            <p><strong>Length:</strong> {vehicle.length_in}&quot;</p>
+            <p><strong>Width:</strong> {vehicle.width_in}&quot;</p>
+            <p><strong>Height:</strong> {vehicle.height_in}&quot;</p>
+            <p><strong>Wheelbase:</strong> {vehicle.wheelbase_in}&quot;</p>
             <p><strong>Curb Weight:</strong> {vehicle.curb_weight_lbs} lbs</p>
           </div>
         );
@@ -60,7 +61,7 @@ const VehicleDetailsModal = ({ vehicle, onClose }: VehicleDetailsModalProps) => 
       <div className={styles.modalContent} onClick={(e) => e.stopPropagation()}>
         <button className={styles.closeButton} onClick={onClose}>X</button>
         <div className={styles.topSection}>
-          <img src={vehicle.imageUrl} alt={`${vehicle.make} ${vehicle.model}`} className={styles.vehicleImage} />
+          <Image src={vehicle.imageUrl || ''} alt={`${vehicle.make} ${vehicle.model}`} className={styles.vehicleImage} width={400} height={225} />
           <div className={styles.basicInfo}>
             <h2>{vehicle.year} {vehicle.make} {vehicle.model}</h2>
             <div className={styles.trimSelector}>
