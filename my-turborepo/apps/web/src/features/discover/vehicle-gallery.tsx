@@ -45,12 +45,11 @@ export function VehicleGallery({ vehicles, filters }: VehicleGalleryProps) {
         {filteredVehicles.map((vehicle) => (
           <div key={vehicle.id} className="group transition-all duration-300" onClick={() => handleOpenModal(vehicle)}>
             <div className="bg-black/50 backdrop-blur-lg rounded-2xl p-4 text-white flex flex-col gap-4 border border-transparent transition-all duration-300 group-hover:scale-105 group-hover:border-lime-400/50 group-hover:shadow-lg group-hover:shadow-lime-500/20 cursor-pointer">
-              <div className="flex justify-between items-center text-xs text-neutral-400">
+              <div className="flex items-center text-xs text-neutral-400">
                 <div className="flex items-center gap-2">
                   <span className="w-2 h-2 rounded-full bg-green-500"></span>
                   In {Math.floor(Math.random() * 100)} garages
                 </div>
-                <span>{new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</span>
               </div>
               <ImageWithFallback
                 src={vehicle.imageUrl || ''}
@@ -63,9 +62,6 @@ export function VehicleGallery({ vehicles, filters }: VehicleGalleryProps) {
               <div className="text-center">
                 <h3 className="font-bold text-lg">{vehicle.year} {vehicle.make} {vehicle.model}</h3>
                 <p className="text-neutral-400 text-sm">{vehicle.trim}</p>
-              </div>
-              <div className="flex gap-2">
-                <button onClick={(e) => { e.stopPropagation(); toast.success('Added to your garage!'); }} className="bg-lime-500/20 hover:bg-lime-500/40 transition-colors w-full py-2 rounded-lg text-sm text-lime-400">Add to Garage</button>
               </div>
               <div className="bg-lime-500/20 text-lime-400 text-xs text-center py-2 rounded-lg">
                 {Math.floor(Math.random() * 50)} public builds
