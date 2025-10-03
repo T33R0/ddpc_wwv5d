@@ -18,7 +18,7 @@ import {
 } from './navigation-menu';
 
 const ScrutineerTab = ({ onClick, isOpen }: { onClick: () => void; isOpen: boolean }) => (
-  <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-full z-10">
+  <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-full z-20">
     <div
       className="relative w-48 h-10 bg-neutral-900/80 backdrop-blur-lg rounded-b-lg border-b border-x border-neutral-700 cursor-pointer group"
       onClick={onClick}
@@ -47,7 +47,7 @@ export function Header() {
     <>
       <AuthModal open={authModalOpen} onOpenChange={setAuthModalOpen} />
       <ChatDrawer open={chatDrawerOpen} onOpenChange={setChatDrawerOpen} />
-      <header className="fixed top-0 left-0 right-0 z-50 bg-black/50 backdrop-blur-lg border-b border-neutral-800">
+      <header className="fixed top-0 left-0 right-0 z-30 bg-black/50 backdrop-blur-lg border-b border-neutral-800">
         <div className="relative container mx-auto px-4 h-16 flex items-center justify-between text-white">
           <div className="flex items-center">
             <Link href="/">
