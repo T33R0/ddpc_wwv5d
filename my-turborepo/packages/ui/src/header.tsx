@@ -18,20 +18,20 @@ import {
 } from './navigation-menu';
 
 const ScrutineerTab = ({ onClick, isOpen }: { onClick: () => void; isOpen: boolean }) => (
-  <div className="absolute -bottom-0 left-1/2 -translate-x-1/2">
+  <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-full">
     <div
-      className="relative w-48 h-10 bg-neutral-900/80 backdrop-blur-lg rounded-t-lg border-t border-x border-neutral-700 cursor-pointer group"
+      className="relative w-48 h-10 bg-neutral-900/80 backdrop-blur-lg rounded-b-lg border-b border-x border-neutral-700 cursor-pointer group"
       onClick={onClick}
     >
-      <div className="absolute -left-2.5 -bottom-0 w-2.5 h-2.5 bg-transparent"
-        style={{ clipPath: 'polygon(100% 0, 0 100%, 100% 100%)' }}>
+      <div className="absolute -left-2.5 -top-0 w-2.5 h-2.5 bg-transparent"
+        style={{ clipPath: 'polygon(0 0, 100% 0, 0 100%)' }}>
         <div className="w-full h-full bg-neutral-900/80 border-r border-neutral-700 group-hover:bg-neutral-800/80" />
       </div>
-      <div className="absolute -right-2.5 -bottom-0 w-2.5 h-2.5 bg-transparent"
-        style={{ clipPath: 'polygon(0 0, 0 100%, 100% 100%)' }}>
+      <div className="absolute -right-2.5 -top-0 w-2.5 h-2.5 bg-transparent"
+        style={{ clipPath: 'polygon(0 0, 100% 0, 100% 100%)' }}>
         <div className="w-full h-full bg-neutral-900/80 border-l border-neutral-700 group-hover:bg-neutral-800/80" />
       </div>
-      <div className="flex items-center justify-center h-full text-white text-sm font-medium group-hover:bg-neutral-800/80 rounded-t-lg transition-colors">
+      <div className="flex items-center justify-center h-full text-white text-sm font-medium group-hover:bg-neutral-800/80 rounded-b-lg transition-colors">
         Scrutineer
         {isOpen ? <ChevronUp className="h-3 w-3 ml-2" /> : <ChevronDown className="h-3 w-3 ml-2" />}
       </div>
