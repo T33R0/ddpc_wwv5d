@@ -64,7 +64,6 @@ export function PricingPage() {
     <section className="py-20 bg-black text-white">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <div className="inline-block border border-slate-700 py-1 px-4 rounded-lg mb-6 text-sm text-slate-300">Pricing</div>
           <h2 className="text-4xl md:text-5xl font-bold tracking-tighter mb-6">
             Choose Your Plan
           </h2>

@@ -18,7 +18,7 @@ import {
 } from './navigation-menu';
 
 const ScrutineerTab = ({ onClick, isOpen }: { onClick: () => void; isOpen: boolean }) => (
-  <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-full">
+  <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-full z-10">
     <div
       className="relative w-48 h-10 bg-neutral-900/80 backdrop-blur-lg rounded-b-lg border-b border-x border-neutral-700 cursor-pointer group"
       onClick={onClick}
