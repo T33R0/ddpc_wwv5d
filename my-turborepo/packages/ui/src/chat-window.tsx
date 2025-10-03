@@ -8,8 +8,12 @@ import {
     CheckCheck,
     Check,
     Users,
+    X,
+    ChevronUp,
 } from "lucide-react";
 import Image from "next/image";
+import { Logo } from "./logo";
+import { DrawerClose } from "./drawer";
 import { cn } from "./lib/utils";
 
 interface Message {
@@ -32,52 +36,32 @@ interface Message {
 interface ChatWindowProps {
     chatName?: string;
     messages?: Message[];
+    onClose?: () => void;
 }
 
 export function ChatWindow({
-    chatName = "Design Discussions",
+    chatName = "Scrutineer",
     messages = [
         {
             id: "1",
-            content: "What do you all think of the new discover page design?",
+            content: "What can I help you with?",
             sender: {
-                name: "Alex Patterson",
-                avatar:
-                    "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=2080&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+                name: "Scrutineer",
+                avatar: "",
                 isOnline: true,
             },
-            timestamp: "11:30 AM",
+            timestamp: "now",
             status: "read",
-            reactions: [
-                { emoji: "👍", count: 4, reacted: true },
-                { emoji: "🤔", count: 1, reacted: false },
-            ],
-        },
-        {
-            id: "2",
-            content:
-                "I love it! The vehicle gallery is super clean and the chat window is a great touch.",
-            sender: {
-                name: "Samantha Lee",
-                avatar:
-                    "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-                isOnline: true,
-            },
-            timestamp: "11:32 AM",
-            status: "delivered",
         },
     ],
+    onClose,
 }: ChatWindowProps) {
 
     return (
         <div className="w-full max-w-5xl mx-auto p-6 bg-white dark:bg-black rounded-3xl shadow-lg flex flex-col h-[550px] border border-gray-200 dark:border-gray-800">
             <header className="flex justify-between items-center border-b border-gray-200 dark:border-gray-800 pb-4 mb-4">
                 <div className="flex items-center gap-4">
-                    <div className="p-2 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full">
-                        <div className="w-6 h-6 bg-white rounded-full flex items-center justify-center">
-                            <span className="text-xs font-bold text-blue-600">AI</span>
-                        </div>
-                    </div>
+                    <Logo />
                     <div>
                         <h2 className="text-xl font-bold text-black dark:text-white">
                             Scrutineer
@@ -87,12 +71,23 @@ export function ChatWindow({
                         </p>
                     </div>
                 </div>
-                <button
-                    aria-label="More options"
-                    className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-900 transition-colors"
-                >
-                    <MoreHorizontal className="w-5 h-5 text-gray-500 dark:text-gray-400" />
-                </button>
+                <div className="flex items-center gap-2">
+                    <button
+                        aria-label="More options"
+                        className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-900 transition-colors"
+                    >
+                        <MoreHorizontal className="w-5 h-5 text-gray-500 dark:text-gray-400" />
+                    </button>
+                    {onClose && (
+                        <button
+                            onClick={onClose}
+                            aria-label="Close chat"
+                            className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-900 transition-colors"
+                        >
+                            <X className="w-5 h-5 text-gray-500 dark:text-gray-400" />
+                        </button>
+                    )}
+                </div>
             </header>
 
             <main className="flex-1 flex flex-col bg-white dark:bg-black">
@@ -112,37 +107,29 @@ export function ChatWindow({
                                     I'm your AI assistant here to help you discover, research, and make informed decisions about vehicles. How can I assist you today?
                                 </p>
                             </div>
-                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 max-w-lg">
+                            <div className="grid grid-cols-1 gap-3 max-w-lg">
                                 <button className="p-3 bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-lg text-left transition-colors border border-gray-200 dark:border-gray-700">
                                     <div className="font-medium text-black dark:text-white text-sm">
-                                        🔍 Vehicle Research
+                                        🏠 Show me around the site
                                     </div>
                                     <div className="text-xs text-gray-500 dark:text-gray-400 mt-1">
-                                        Get detailed specs and comparisons
+                                        Get a guided tour of all features
                                     </div>
                                 </button>
                                 <button className="p-3 bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-lg text-left transition-colors border border-gray-200 dark:border-gray-700">
                                     <div className="font-medium text-black dark:text-white text-sm">
-                                        💰 Price Analysis
+                                        🏗️ Help me setup my garage
                                     </div>
                                     <div className="text-xs text-gray-500 dark:text-gray-400 mt-1">
-                                        Market trends and fair pricing
+                                        Create and manage your vehicle collection
                                     </div>
                                 </button>
                                 <button className="p-3 bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-lg text-left transition-colors border border-gray-200 dark:border-gray-700">
                                     <div className="font-medium text-black dark:text-white text-sm">
-                                        🏗️ Build Recommendations
+                                        🚗 Let's discover my next vehicle
                                     </div>
                                     <div className="text-xs text-gray-500 dark:text-gray-400 mt-1">
-                                        Parts and modifications advice
-                                    </div>
-                                </button>
-                                <button className="p-3 bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-lg text-left transition-colors border border-gray-200 dark:border-gray-700">
-                                    <div className="font-medium text-black dark:text-white text-sm">
-                                        📊 Performance Data
-                                    </div>
-                                    <div className="text-xs text-gray-500 dark:text-gray-400 mt-1">
-                                        Track times, dyno results, specs
+                                        Find the perfect car for your needs
                                     </div>
                                 </button>
                             </div>
@@ -203,6 +190,14 @@ export function ChatWindow({
                         <Send className="w-5 h-5" />
                     </button>
                 </footer>
+                {/* Close button anchored to bottom of chat window */}
+                <div className="flex justify-center pb-2 -mb-2">
+                    <DrawerClose asChild>
+                        <button className="bg-black/50 backdrop-blur-lg border border-white/20 rounded-b-lg h-8 w-16 flex items-center justify-center hover:bg-slate-800/50 transition-colors shadow-lg">
+                            <ChevronUp className="h-3 w-3 text-white" />
+                        </button>
+                    </DrawerClose>
+                </div>
             </main>
         </div>
     );
