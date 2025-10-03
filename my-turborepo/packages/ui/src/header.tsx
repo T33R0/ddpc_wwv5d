@@ -7,7 +7,6 @@ import { AuthModal } from './auth-modal';
 import { ChatDrawer } from './chat-drawer';
 import { Button } from './button';
 import { GridCard } from './grid-card';
-import { PricingDropdown } from './landing/Pricing';
 import { ChevronDown, ChevronUp } from 'lucide-react';
 import {
   NavigationMenu,
@@ -15,6 +14,7 @@ import {
   NavigationMenuItem,
   NavigationMenuTrigger,
   NavigationMenuContent,
+  NavigationMenuLink,
 } from './navigation-menu';
 
 const ScrutineerTab = ({ onClick, isOpen }: { onClick: () => void; isOpen: boolean }) => (
@@ -59,36 +59,41 @@ export function Header() {
             <NavigationMenu>
               <NavigationMenuList>
                 <NavigationMenuItem>
-                  <NavigationMenuTrigger>Discover</NavigationMenuTrigger>
+                  <Link href="/discover" legacyBehavior passHref>
+                    <NavigationMenuTrigger>Discover</NavigationMenuTrigger>
+                  </Link>
                   <NavigationMenuContent>
                     <div className="grid grid-cols-2 gap-3 p-4 w-full">
                       <GridCard title="Explore Vehicles" href="/discover">
                         Browse a curated collection of unique and interesting vehicles.
                       </GridCard>
-                      <GridCard title="Featured Builds" href="/builds">
+                      <GridCard title="Featured Builds" href="/discover">
                         Get inspired by top builds from the community.
                       </GridCard>
                     </div>
                   </NavigationMenuContent>
                 </NavigationMenuItem>
                 <NavigationMenuItem>
-                  <NavigationMenuTrigger>Community</NavigationMenuTrigger>
+                  <Link href="/community" legacyBehavior passHref>
+                    <NavigationMenuTrigger>Community</NavigationMenuTrigger>
+                  </Link>
                   <NavigationMenuContent>
                     <div className="grid grid-cols-2 gap-3 p-4 w-full">
-                      <GridCard title="Community Builds" href="/community/builds">
+                      <GridCard title="Community Builds" href="/community">
                         See what others are building and share your own progress.
                       </GridCard>
-                      <GridCard title="Member Garages" href="/community/garages">
+                      <GridCard title="Member Garages" href="/community">
                         Check out the garages of other enthusiasts.
                       </GridCard>
                     </div>
                   </NavigationMenuContent>
                 </NavigationMenuItem>
                 <NavigationMenuItem>
-                  <NavigationMenuTrigger>Pricing</NavigationMenuTrigger>
-                  <NavigationMenuContent>
-                    <PricingDropdown />
-                  </NavigationMenuContent>
+                  <Link href="/pricing" legacyBehavior passHref>
+                    <NavigationMenuLink className={'group inline-flex h-10 w-max items-center justify-center rounded-md bg-transparent px-4 py-2 text-sm font-medium transition-colors hover:bg-slate-800 hover:text-white focus:bg-slate-800 focus:text-white focus:outline-none disabled:pointer-events-none disabled:opacity-50'}>
+                      Pricing
+                    </NavigationMenuLink>
+                  </Link>
                 </NavigationMenuItem>
               </NavigationMenuList>
             </NavigationMenu>
